@@ -47,6 +47,10 @@ async function run() {
     { title: "Wissenschaft und Forschung", publisher: p2._id },
   ]);
 
+  /*
+   * populate sorgt dafür, dass bei einer Abfrage mit Referenzen (ObjectId-Feldern) die verknüpften Dokumente vollständig geladen
+   * und eingebettet werden — anstatt nur die IDs zurückzugeben.
+   */
   const books = await Book.find().populate("publisher");
   console.log("📚 Bücher mit Publisher:", books);
   await mongoose.connection.close();
