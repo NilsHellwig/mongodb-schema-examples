@@ -1,0 +1,23 @@
+{
+  "name": "mongodb-schema-examples",
+  "version": "1.0.0",
+  "description": "Willkommen zu den Mongoose-Übungen!   Hier lernst du den Umgang mit **Schemas**, **Modellen** und **Referenzen** in **MongoDB** über **Mongoose** – ideal für Einsteiger in die Backend-Entwicklung mit Node.js.",
+  "homepage": "https://github.com/NilsHellwig/mongodb-schema-examples#readme",
+  "bugs": {
+    "url": "https://github.com/NilsHellwig/mongodb-schema-examples/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NilsHellwig/mongodb-schema-examples.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "mongoose": "^8.15.1"
+  }
+}
