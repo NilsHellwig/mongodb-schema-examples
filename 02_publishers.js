@@ -22,14 +22,11 @@ mongoose
   .catch((err) => console.error("❌ Fehler:", err));
 
 const publisherSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  location: String,
-  founded: Number,
+
 });
 
 const bookSchema = new mongoose.Schema({
-  title: { type: String, required: true },
-  publisher: { type: mongoose.Schema.Types.ObjectId, ref: "Publisher", required: true },
+
 });
 
 const Publisher = mongoose.model("Publisher", publisherSchema);
@@ -39,19 +36,12 @@ async function run() {
   await Publisher.deleteMany({});
   await Book.deleteMany({});
 
-  const p1 = await Publisher.create({ name: "Penguin Books", location: "UK", founded: 1935 });
-  const p2 = await Publisher.create({ name: "Springer", location: "Germany", founded: 1842 });
-
-  await Book.create([
-    { title: "Data Science Handbook", publisher: p1._id },
-    { title: "Wissenschaft und Forschung", publisher: p2._id },
-  ]);
 
   /*
    * populate sorgt dafür, dass bei einer Abfrage mit Referenzen (ObjectId-Feldern) die verknüpften Dokumente vollständig geladen
    * und eingebettet werden — anstatt nur die IDs zurückzugeben.
    */
-  const books = await Book.find().populate("publisher");
+  // const books = await Book.find().populate("publisher");
   console.log("📚 Bücher mit Publisher:", books);
   await mongoose.connection.close();
 }

@@ -53,36 +53,23 @@ async function run() {
   console.log("🚗 20 Autos eingefügt\n");
 
   // Aufgabe 1: Finde alle Autos der Marke "Saab"
-  const Saabs = await Car.find({ brand: "Saab" });
-  console.log("🔍 Saabs:", Saabs);
+
 
   // Aufgabe 2: Finde Autos, die vor 2010 gebaut wurden
-  const oldCars = await Car.find({ year: { $lt: 2010 } });
-  console.log("📅 Autos vor 2010:", oldCars);
+
 
   // Aufgabe 3: Finde alle Elektroautos mit weniger als 50.000 km
-  const cleanElectrics = await Car.find({ electric: true, mileage: { $lt: 50000 } });
-  console.log("⚡️ Saubere E-Autos:", cleanElectrics);
+
 
   // Aufgabe 4: Aktualisiere alle BMWs: mileage auf 0 setzen (Service gemacht)
-  await Car.updateMany({ brand: "BMW" }, { mileage: 0 });
-  console.log("🔧 BMWs zurückgesetzt");
+
 
   // Aufgabe 5: Erhöhe die Laufleistung aller Autos aus dem Jahr 2020 um 10.000 km
-  await Car.updateMany({ year: 2020 }, { $inc: { mileage: 10000 } });
-  console.log("➕ 10.000 km auf 2020er Autos addiert");
+
 
   // Aufgabe 6: Lösche alle Dieselautos mit mehr als 150.000 km
-  const deleted = await Car.deleteMany({ fuel: "Diesel", mileage: { $gt: 150000 } });
-  console.log(`🗑️ Gelöschte Dieselautos: ${deleted.deletedCount}`);
 
-  // Aufgabe 7: Finde ein beliebiges Elektroauto und gib nur Marke & Modell aus
-  const electricOne = await Car.findOne({ electric: true }).select("brand model");
-  console.log("⚡️ E-Auto gefunden:", electricOne);
 
-  // Aufgabe 8: Zähle, wie viele Autos es pro Marke gibt
-  const countPerBrand = await Car.aggregate([{ $group: { _id: "$brand", count: { $sum: 1 } } }]);
-  console.log("📊 Autos pro Marke:", countPerBrand);
 
   await mongoose.connection.close();
   console.log("\n🔚 Verbindung beendet");

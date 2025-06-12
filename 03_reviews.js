@@ -27,20 +27,15 @@ mongoose
   .catch((err) => console.error("❌ Fehler:", err));
 
 const userSchema = new mongoose.Schema({
-  username: { type: String, required: true },
-  email: { type: String, required: true },
-  createdAt: { type: Date, default: Date.now },
+
 });
 
 const bookSchema = new mongoose.Schema({
-  title: { type: String, required: true },
+
 });
 
 const reviewSchema = new mongoose.Schema({
-  user: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
-  book: { type: mongoose.Schema.Types.ObjectId, ref: "Book", required: true },
-  rating: Number,
-  comment: String,
+
 });
 
 const User = mongoose.model("User", userSchema);
@@ -52,14 +47,6 @@ async function run() {
   await Book.deleteMany({});
   await Review.deleteMany({});
 
-  const user = await User.create({ username: "max123", email: "max@example.com" });
-  const b1 = await Book.create({ title: "JavaScript für Einsteiger" });
-  const b2 = await Book.create({ title: "Node.js in Action" });
-
-  await Review.create([
-    { user: user._id, book: b1._id, rating: 5, comment: "Sehr hilfreich!" },
-    { user: user._id, book: b2._id, rating: 4, comment: "Gut, aber etwas knapp." },
-  ]);
 
   const reviews = await Review.find().populate("user").populate("book");
   console.log("📝 Bewertungen:", reviews);
