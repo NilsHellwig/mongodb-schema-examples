@@ -36,6 +36,10 @@ const Book = mongoose.model("Book", bookSchema);
  * async markiert eine Funktion als asynchron, die ein Promise zurückgibt.
  * Mit await wird innerhalb einer solchen Funktion gewartet, bis ein Promise erfüllt ist, bevor der Code weiterläuft.
  * So kannst du asynchrone Abläufe einfach und synchron-artig schreiben.
+ * .then()/catch(): Ketten-basierter Stil
+ * → gut für einfache Fälle, kann bei mehreren Schritten unübersichtlich werden.
+ * async/await: Modern, liest sich wie synchroner Code
+ * → übersichtlicher bei vielen asynchronen Schritten.
  */
 async function run() {
   await Book.deleteMany({}); // Datenbank aufräumen ohne Filterobjekt: z.B. Book.deleteMany({ author: "Hermann Hesse" }); würde nur Bücher von Hermann Hesse löschen.
